@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import Footer from '../constants/Footer';
+import Header from '../constants/Header';
 
 
 
@@ -10,6 +11,7 @@ function SignIn() {
 
     return (
         <div style={{ display: 'block' }}>
+            <Header />
             <BodyComponent />
             <Footer />
         </div>
@@ -59,7 +61,7 @@ function FormDataComponent() {
         e.preventDefault();
         navigate("/")
         console.log(email, ' ' + password);
-        
+
         // try {
         //     console.log('In try part');
 
@@ -110,7 +112,7 @@ function FormDataComponent() {
                             type='submit'
                             style={{
                                 color: 'white',
-                                backgroundColor: '#B2A4FF',
+                                backgroundColor: '#FD8D14',
                                 textTransform: 'none',
                                 paddingRight: '5rem',
                                 paddingLeft: '5rem',
@@ -122,9 +124,14 @@ function FormDataComponent() {
                         >
                             Sign in
                         </Button>
-                    </div>
-                </form>
 
+                    </div>
+
+                </form>
+                {/* <br /> */}
+                <p>Don't have an account ?<span className='text-blue-400 text-lg cursor-pointer ' onClick={() => {
+                    navigate("/signup")
+                }}> Sign up</span></p>
             </div >
 
         </>

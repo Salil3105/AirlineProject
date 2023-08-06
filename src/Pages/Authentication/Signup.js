@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../constants/Footer';
 
 import { Button } from '@mui/material';
+import Header from '../constants/Header';
 
 function SignUp() {
     return (
         <div style={{ display: 'block' }}>
+            <Header />
             <BodyComponent />
             <Footer />
         </div>
@@ -166,7 +168,7 @@ function FormDataComponent() {
                     type='submit'
                     style={{
                         color: 'white',
-                        backgroundColor: '#B2A4FF',
+                        backgroundColor: '#FD8D14',
                         textTransform: 'none',
                         paddingRight: '5rem',
                         paddingLeft: '5rem',
@@ -182,7 +184,7 @@ function FormDataComponent() {
             <div className='w-full flex pb-8 items-center justify-center cursor-pointer'>
 
                 <p>Already have an account ?<span className='text-blue-400 text-lg ' onClick={() => {
-
+                    navigate("/signin")
                 }}> Sign in</span></p>
             </div>
 
