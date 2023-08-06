@@ -24,7 +24,7 @@ function BookNowBody() {
             </div>
 
             <div className='px-20 flex w-[100%] justify-between'>
-                <div className='flex flex-col w-1/2 justify-end items-end'>
+                <div className='flex flex-col justify-end items-end'>
                     <FlightBooked />
                     <PassangerDetails />
                 </div>
