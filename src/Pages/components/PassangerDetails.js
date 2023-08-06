@@ -11,7 +11,7 @@ function PassangerDetails() {
     }]);
     return (
         <>
-            <div className='flex items-center justify-evenly rounded-lg m-4 p-2  w-[60%] h-auto bg-white shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)]'>
+            <div className='flex items-center justify-evenly rounded-lg m-4 p-2  w-[100%] h-auto bg-white shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)]'>
                 <input value={name} onChange={(event) => { setName(event.target.value) }} className='bg-white border text-base placeholder:text-black rounded-md block h-12 w-48 p-3 ' required placeholder='Passanger Name' type="text" />
                 <input value={age} onChange={(event) => { setAge(event.target.value) }} className='bg-white border text-base  placeholder:text-black rounded-md block h-12 w-32 p-3 ' required placeholder='Age' type="number" />
 
