@@ -11,11 +11,11 @@ const SearchBar = () => {
 
                 <div className=' h-full w-56 p-3  items-center'>
                     <label className='text-gray-500 text-lg tracking-widest'>From</label>
-                    <input type="text" id="from" className="bg-gray-200 border text-bg border-none rounded-md block w-52 p-3" placeholder="Enter City or Airpot" />
+                    <input type="text"  id="from" className="placeholder:text-black bg-gray-200 border text-bg border-none rounded-md block w-52 p-3" placeholder="Enter City or Airpot" />
                 </div>
                 <div className=' h-full w-56 p-3  items-center'>
                     <label className='text-gray-500 text-lg tracking-widest'>To</label>
-                    <input type="text" id="from" className="bg-gray-200 border text-bg border-none rounded-md block w-52 p-3" placeholder="Enter City or Airpot" />
+                    <input type="text" id="from" className= "placeholder:text-black bg-gray-200 border text-bg border-none rounded-md block w-52 p-3" placeholder="Enter City or Airpot" />
                 </div>
                 <div className=' h-full w-44 p-3  items-center'>
                     <label className='text-gray-500 text-lg tracking-widest'>Departure</label>
@@ -27,7 +27,7 @@ const SearchBar = () => {
                 </div>
                 <div className=' h-full w-[6.50rem] p-3  items-center'>
                     <label className='text-gray-500 text-lg tracking-wider'>Travellers</label>
-                    <input type="number" style={{ color: 'black', fontSize: '0.885rem' }} id="from" className="bg-gray-200 border text-bg border-none rounded-md block w-24 p-3" placeholder="No." />
+                    <input type="number" style={{ color: 'black', fontSize: '0.885rem' }} id="from" className="placeholder:text-black bg-gray-200 border text-bg border-none rounded-md block w-24 p-3" placeholder="No." />
                 </div>
                 <div className='h-full w-[8.7rem] p-3 ml-2 items-center'>
                     <label className='text-gray-500 text-lg tracking-widest'> || Class</label>

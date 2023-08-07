@@ -18,12 +18,12 @@ function BookNow() {
 
 function BookNowBody() {
     return (
-        <>
+        <div className=''>
             <div className='flex justify-center bg-[#F9F9F9]'>
                 <SearchBar />
             </div>
 
-            <div className='px-20 flex w-[100%] justify-between'>
+            <div className='px-20 flex justify-center mt-10 '>
                 <div className='flex flex-col justify-end items-end'>
                     <FlightBooked />
                     <PassangerDetails />
@@ -51,7 +51,7 @@ function BookNowBody() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
