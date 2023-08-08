@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../constants/Header'
 import SearchBar from '../components/SearchBar';
 import SearchBarResult from '../components/SearchBarResult';
-import BreadCrumbs from '../components/BreadCrumbs';
+// import BreadCrumbs from '../components/BreadCrumbs';
 // import Footer from '../constants/Footer';
 
 

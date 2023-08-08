@@ -10,7 +10,7 @@ const PassengerDetails = ({
     addPassenger,
 }) => {
     return (
-        <div className="flex items-center justify-evenly rounded-lg mt-9 w-[100%] h-auto bg-white shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)]">
+        <div className="flex items-center justify-around rounded-lg mt-9 w-[100%] h-auto bg-white shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)]">
             <input
                 className="bg-white border text-base placeholder:text-black rounded-md block h-12 w-40 p-3 "
                 required
@@ -53,7 +53,7 @@ const PassengerDetails = ({
                 </select>
             </div>
             <button
-                className="block h-12 w-28 rounded-lg bg-orange-500 text-white text-sm p-2 font-semibold mt-4"
+                className="block h-12 w-32 rounded-lg bg-orange-500 text-white text-base  font-semibold"
                 onClick={addPassenger}
             >
                 Add Passenger
@@ -82,20 +82,6 @@ const PassengerList = () => {
             },
         ]);
     };
-
-    // passenger = [
-    //     {
-    //         name: "asdas",
-    //         age: "sdas",
-    //         gender: "sdas"
-    //     },
-    //     {
-    //         name: "asdas",
-    //         age: "sdas",
-    //         gender: "sdas"
-    //     },
-    // ]
-
 
     const handleNameChange = (index, value) => {
         setPassengers((prevPassengers) => {

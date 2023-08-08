@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../constants/Header';
 import SearchBar from '../components/SearchBar';
 import PassangerDetails from '../components/PassangerDetails';
-import SearchBarResult from '../components/SearchBarResult';
+// import SearchBarResult from '../components/SearchBarResult';
 import Footer from '../constants/Footer';
 import { CurrencyRupee } from '@mui/icons-material';
 
