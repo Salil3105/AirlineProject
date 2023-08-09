@@ -19,7 +19,7 @@ function PaymentScreenBody() {
     const navigate = useNavigate();
     return (
         <>
-            <div className='bg-[#F9F9F9] w-screen h-[40rem] flex justify-evenly items-center '>
+            <div className='bg-[#F9F9F9]  w-screen h-[40rem] flex justify-evenly items-center '>
                 <div className='shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)] bg-white flex h-48 w-[45%] items-center justify-between p-10 rounded-md border '>
                     <div className='flex flex-col'>
                         <label
