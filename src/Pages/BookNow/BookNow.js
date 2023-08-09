@@ -55,7 +55,6 @@ function BookNowBody() {
                         <button onClick={() => {
                             console.log('Payment method');
                             navigate("/flightDetails/bookNow/payNow")
-
                         }} className="block h-12 w-32 rounded-lg bg-orange-500 text-white text-base  font-semibold">
                             Pay now
                         </button>

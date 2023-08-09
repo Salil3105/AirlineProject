@@ -3,6 +3,7 @@ import { ArrowOutward, CurrencyRupee } from '@mui/icons-material';
 import Header from '../constants/Header'
 import Footer from '../constants/Footer'
 import { FlightBooked } from '../BookNow/BookNow';
+import { useNavigate } from 'react-router-dom';
 
 function PaymentScreen() {
     return (
@@ -14,7 +15,8 @@ function PaymentScreen() {
     )
 }
 
-const PaymentScreenBody = () => {
+function PaymentScreenBody() {
+    const navigate = useNavigate();
     return (
         <>
             <div className='bg-[#F9F9F9]  w-screen h-[40rem] flex justify-evenly items-center '>
@@ -26,7 +28,7 @@ const PaymentScreenBody = () => {
                         >
                             UPI ID
                         </label>
-                        
+
                         <input className="mt-2 w-[28rem] p-2 border-b-2 border-gray-500 focus:border-orange-500 outline-none" type="text" placeholder="Enter your UPI Id" />
                         <br />
                         <label className='text-sm text-gray-400 w-96 '>A payment request will be sent to this UPI Id</label>
@@ -34,8 +36,9 @@ const PaymentScreenBody = () => {
 
                     <div className=''>
                         <button onClick={() => {
+                            navigate("/ticketDetails")
                             console.log('Verify and Pay Click');
-                        }} className="h-12 w-52 rounded-lg bg-orange-500 text-white text-base  font-bold">
+                        }} className="h-12 w-44 rounded-lg bg-orange-500 text-white text-base  font-bold">
                             Verify and Pay
                         </button>
                     </div>

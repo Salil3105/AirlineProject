@@ -2,6 +2,7 @@ import React from 'react'
 
 import logo from '../../images/logo.png'
 import { useNavigate } from 'react-router-dom';
+import TicketIcon from '../../images/tickets.png';
 
 function Header() {
     const airoplaneIcon = 'https://www.ixigo.com/rt-udaan/pc/img/flight-new.svg';
@@ -26,6 +27,13 @@ function Header() {
                     }} className='flex items-center justify-center space-x-2 ml-6' >
                         <img className='cursor-pointer' src={airoplaneIcon} alt='not found' />
                         <p className='cursor-pointer' style={{color:"#EC5B24", fontSize:"18px", fontFamily:"sans-serif",letterSpacing:'1.2px'}}>Flights</p>
+                    </div>
+
+                    <div onClick={()=>{
+                        navigate("/ticketDetails");
+                    }} className='flex items-center justify-center space-x-2 ml-6' >
+                        <img className='cursor-pointer' style={{height:'30px', width:'30px'}}  src={TicketIcon} alt='not found' />
+                        <p className='cursor-pointer' style={{color:"#EC5B24", fontSize:"18px", fontFamily:"sans-serif",letterSpacing:'1.2px'}}>Tickets</p>
                     </div>
                 </div>
 

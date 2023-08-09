@@ -7,12 +7,14 @@ import Home from './Pages/Home/Home';
 import FlightDetails from './Pages/FlightDetails/FlightDetails';
 import BookNow from './Pages/BookNow/BookNow';
 import PaymentScreen from './Pages/PaymentScreens/PaymentScreen';
+import TicketScreen from './Pages/TicketScreen/TicketScreen';
 
 function App() {
   return (
-    <div className=''>
+    <>
       <Router>
         <Routes>
+          <Route path='/ticketDetails' element={<TicketScreen />} />
           <Route path='/flightDetails/bookNow/payNow' element={<PaymentScreen />} />
           <Route path='/flightDetails/bookNow' element={<BookNow />} />
           <Route path='/flightDetails' element={<FlightDetails />} />
@@ -21,7 +23,7 @@ function App() {
           <Route path='/' element={<Home />} />
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 
