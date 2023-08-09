@@ -3,6 +3,7 @@ import React from 'react'
 import logo from '../../images/logo.png'
 import { useNavigate } from 'react-router-dom';
 import TicketIcon from '../../images/tickets.png';
+import { useSelector } from 'react-redux';
 
 function Header() {
     const airoplaneIcon = 'https://www.ixigo.com/rt-udaan/pc/img/flight-new.svg';
@@ -10,6 +11,7 @@ function Header() {
     const customerServiceIcon = 'https://www.ixigo.com/rt-udaan/pc/img/customer-new.svg';
     const profileIcon = 'https://www.ixigo.com/rt-udaan/pc/img/user-new.svg';
     const navigate = useNavigate();
+    const userInfo = useSelector((state)=>state.user.userInfo);
     return (
         <>
             {/* Header Container  */}
@@ -47,9 +49,11 @@ function Header() {
                         <img className='cursor-pointer' src={offerIcon} alt='not found' />
                         <p className='cursor-pointer ml-2' style={{color:"#EC5B24", fontSize:"18px", fontFamily:"sans-serif",letterSpacing:'1.2px'}}>Customer Service</p>
                     </div>
+
+                    
                     <div className='flex items-center justify-center mr-16' onClick={()=>{navigate('/signin')}}>
                         <img className='cursor-pointer' src={profileIcon} alt='not found' />
-                        <p  className='cursor-pointer ml-2' style={{color:"#EC5B24", fontSize:"18px", fontFamily:"sans-serif",letterSpacing:'1.2px'}}>Login</p>
+                        <p  className='cursor-pointer ml-2' style={{color:"#EC5B24", fontSize:"18px", fontFamily:"sans-serif",letterSpacing:'1.2px'}}>{userInfo.name}</p>
                     </div>
                 </div>
 

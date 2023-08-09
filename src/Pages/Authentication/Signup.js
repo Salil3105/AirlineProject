@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../constants/Footer';
+import axios from 'axios';
 
+import Footer from '../constants/Footer';
 import { Button } from '@mui/material';
 import Header from '../constants/Header';
+
+
+import { setUserInfo, setIsLoggedIn } from "../../store/reducers/userReducer";
+import { useSelector, useDispatch } from "react-redux";
 
 function SignUp() {
     return (
@@ -35,7 +40,11 @@ function BodyComponent() {
 }
 
 function FormDataComponent() {
-    
+    // reading redux data
+    const userInfo = useSelector((state) => state.user.userInfo);
+    console.log("userInfo", userInfo);
+    const dispatch = useDispatch()
+
     const [firstname, setFirstName] = useState();
     const [lastname, setLastName] = useState();
     const [email, setEmail] = useState();
@@ -76,46 +85,61 @@ function FormDataComponent() {
     }
 
     const navigate = useNavigate();
+
     const handleSignUp = async (e) => {
         e.preventDefault();
-        navigate("/")
-        console.log('First name :'+ firstname);
-        console.log('Last name  :'+ lastname);
-        console.log('Email id   :'+ email);
-        console.log('Password   :'+ password);
-        
-        console.log('Birthdate   :'+ date);
-        console.log('Phone no.   :'+ phone);
-        console.log('Gender   :'+ gender);
-        console.log('Confirm password   :'+ confirmpassword);
-        
-        // try {
-        //     console.log(firstname + ' ' + lastname + ' ' + email + ' ' + password);
-        //     let bodyContent = JSON.stringify({
-        //         "first_name": firstname,
-        //         "last_name": lastname,
-        //         "email": email,
-        //         "password": password
-        //     });
 
-        //     let response = await axios.post("http://localhost:5000/auth/register", bodyContent, {
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             'Access-Control-Allow-Origin': '*',
-        //         },
-        //     })
+        console.log('First name :' + firstname);
+        console.log('Last name  :' + lastname);
+        console.log('Email id   :' + email);
+        console.log('Password   :' + password);
 
-        //     if (response.status === 201) {
-        //         console.log(response.status)
-        //         navigate('/signin');
-        //     }
-        //     else {
-        //         console.log('Error: ' + JSON.stringify(response));
-        //     }
+        console.log('Birthdate   :' + date);
+        console.log('Phone no.   :' + phone);
+        console.log('Gender   :' + gender);
+        console.log('Confirm password   :' + confirmpassword);
 
-        // } catch (err) {
-        //     console.log(err.message);
-        // }
+        try {
+            console.log(firstname + ' ' + lastname + ' ' + email + ' ' + password);
+            let bodyContent = JSON.stringify({
+                "email": email,
+                "password": password,
+                "firstname": firstname,
+                "lastname": lastname,
+                "dob": date,
+                "phoneNumber": phone,
+                "gender": gender,
+            });
+
+            let response = await axios.post("http://127.0.0.1:8080/signup", bodyContent, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+            })
+
+            if (response.status === 201) {
+                // console.log(response.status)
+                // console.log('Signup successfully');
+                // navigate('/signin');
+
+                console.log(response)
+                console.log(JSON.stringify(response.data));
+                dispatch(setUserInfo(response.data));
+                dispatch(setUserInfo(userInfo));
+                console.log("user info after update", userInfo)
+                dispatch(setIsLoggedIn(true));
+                navigate("/signin");
+                alert("Your account succefully registered! Please signin")
+                
+            }
+            else {
+                console.log('Error: ' + JSON.stringify(response));
+            }
+
+        } catch (err) {
+            console.log(err.message);
+        }
     }
 
 
