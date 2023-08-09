@@ -8,7 +8,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 function Footer() {
     return (
         <>
-            <div className=' mt-10 lg:flex lg:flex-col bg-[#73777B] lg:h-96 '>
+            <div className='lg:flex lg:flex-col bg-[#73777B] lg:h-96 '>
                 <div className='sm:flex sm:flex-col-reverse lg:flex lg:flex-row items-center justify-center lg:space-x-12 text-white lg:h-2/3 xl:h-2/3  w-full lg:pr-12 xl:pr-12'>
                     <div className='sm:w-full lg:w-1/3  p-8'>
                         <p>Planning your next trip?</p><br></br>

@@ -5,6 +5,7 @@ import PassangerDetails from '../components/PassangerDetails';
 // import SearchBarResult from '../components/SearchBarResult';
 import Footer from '../constants/Footer';
 import { CurrencyRupee } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 function BookNow() {
     return (
@@ -17,8 +18,9 @@ function BookNow() {
 }
 
 function BookNowBody() {
+    const navigate = useNavigate();
     return (
-        <div className=''>
+        <div className='pb-5'>
             <div className='flex justify-center bg-[#F9F9F9]'>
                 <SearchBar />
             </div>
@@ -30,7 +32,7 @@ function BookNowBody() {
                 </div>
 
                 {/* Fare Ticket  */}
-                <div className='w-1/2 flex justify-center '>
+                <div className='w-1/2 flex flex-col items-center '>
                     <div className='bg-white h-40 rounded-lg  w-[50%] shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)]'>
                         <div className=' h-10 flex items-center font-sans font-semibold text-2xl px-3'>Fare Summary</div>
 
@@ -49,7 +51,18 @@ function BookNowBody() {
                             </div>
                         </div>
                     </div>
+                    <div className='mt-5 '>
+                        <button onClick={() => {
+                            console.log('Payment method');
+                            navigate("/flightDetails/bookNow/payNow")
+
+                        }} className="block h-12 w-32 rounded-lg bg-orange-500 text-white text-base  font-semibold">
+                            Pay now
+                        </button>
+                    </div>
                 </div>
+
+
             </div>
         </div>
     );
@@ -59,7 +72,7 @@ function FlightBooked() {
     const flightIcon2 = 'https://images.ixigo.com/img/common-resources/airline-new/AI.png';
     return (
         <>
-            <div className='flex rounded-lg ml-5 w-[95%] h-40 bg-white shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)]'>
+            <div className='flex rounded-lg w-[100%] h-40 bg-white shadow-[30px_35px_60px_-15px_rgba(0,0,0,0.3)]'>
                 {/* Left part  */}
                 <div className='flex w-full'>
                     {/* FlightIconC ontainer */}
@@ -99,3 +112,4 @@ function FlightBooked() {
 }
 
 export default BookNow;
+export {FlightBooked};

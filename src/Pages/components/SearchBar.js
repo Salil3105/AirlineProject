@@ -7,7 +7,7 @@ const SearchBar = () => {
 
     return (
         <>
-            <div className=' flex bg-[#F9F9F9] h-28 w-[80%] rounded-xl  justify-center ]'>
+            <div className='flex bg-[#F9F9F9] h-28 w-[80%] rounded-xl  justify-center ]'>
 
                 <div className=' h-full w-56 p-3  items-center'>
                     <label className='text-gray-500 text-lg tracking-widest'>From</label>

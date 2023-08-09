@@ -3,7 +3,7 @@ import Header from '../constants/Header'
 import SearchBar from '../components/SearchBar';
 import SearchBarResult from '../components/SearchBarResult';
 // import BreadCrumbs from '../components/BreadCrumbs';
-// import Footer from '../constants/Footer';
+import Footer from '../constants/Footer';
 
 
 function FlightDetails() {
@@ -11,14 +11,14 @@ function FlightDetails() {
         <div className='bg-[#F9F9F9] h-screen w-screen'>
             <Header />
             <FlightDetailsBody />
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 }
 
 function FlightDetailsBody() {
     return (
-        <>
+        <div className='pb-10'>
             <div className='flex justify-center bg-[#F9F9F9]'>
                 <SearchBar />
             </div>
@@ -27,7 +27,7 @@ function FlightDetailsBody() {
                 <SearchBarResult />
                 <SearchBarResult />
             </div>
-        </>
+        </div>
     );
 }
 

@@ -126,7 +126,7 @@ const PassengerList = () => {
                 />
             ))}
             <button
-                className="block h-12 w-28 rounded-lg bg-orange-500 text-white text-base p-2 font-semibold mt-4"
+                className="block h-12 w-28 rounded-lg bg-orange-500 text-white text-base p-2 font-semibold mr-4 mt-4"
                 onClick={handleSubmit}
             >
                 Submit

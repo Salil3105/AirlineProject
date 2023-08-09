@@ -10,7 +10,7 @@ function Home() {
     return (
         <div>
             <Header />
-            <div className='h-96 w-screen flex items-center justify-center'>
+            <div className='border h-[31rem] w-screen flex items-center justify-center'>
                 <SearchBar />
             </div>
             <Footer />
