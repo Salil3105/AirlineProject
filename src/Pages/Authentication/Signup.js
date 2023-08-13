@@ -119,10 +119,6 @@ function FormDataComponent() {
             })
 
             if (response.status === 201) {
-                // console.log(response.status)
-                // console.log('Signup successfully');
-                // navigate('/signin');
-
                 console.log(response)
                 console.log(JSON.stringify(response.data));
                 dispatch(setUserInfo(response.data));
@@ -131,7 +127,6 @@ function FormDataComponent() {
                 dispatch(setIsLoggedIn(true));
                 navigate("/signin");
                 alert("Your account succefully registered! Please signin")
-                
             }
             else {
                 console.log('Error: ' + JSON.stringify(response));

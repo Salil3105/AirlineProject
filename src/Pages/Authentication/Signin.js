@@ -88,7 +88,7 @@ function FormDataComponent() {
         }
       );
 
-      if (response.status == 200) {
+      if (response.status === 200) {
         console.log(response)
         console.log(JSON.stringify(response.data));
         dispatch(setUserInfo(response.data));
