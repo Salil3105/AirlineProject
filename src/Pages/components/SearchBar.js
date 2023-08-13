@@ -3,10 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
+import { setFlightDetailsInfo, setIsLoggedIn, clearUserInfo } from '../../store/reducers/flightDetailsReducer';
+import { useSelector, useDispatch } from "react-redux";
+
 const SearchBar = () => {
     const navigate = useNavigate();
     const [searchLocation, setSearchLocation] = useState([]);
-    
+
+    // reading redux data
+    // const flightDetailsInfo = useSelector((state) => state.flight.flightDetailsInfo);
+    // console.log('flightInfo', flightDetailsInfo);
+    // const dispatch = useDispatch();
 
     const fetchSearData = async (value) => {
         axios
@@ -14,7 +21,7 @@ const SearchBar = () => {
             .then((response) => {
 
                 console.log(response.data);
-                
+
 
                 const airportlist = response.data?.map((item) => {
                     return item?.location
@@ -53,6 +60,23 @@ const SearchBar = () => {
     const handleClassTypeChange = (event) => {
         setClassType(event.target.value);
     };
+
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        console.log("Search Clicked ");
+        console.log("From Airport :", fromAirpot);
+        console.log("To Airport :", toAirpot);
+        console.log("Departure Date : ", departureDate);
+        console.log("Travellers No. : ", travellers);
+        console.log("Class : ", classType);
+        try {
+            let response = await axios.post("");
+
+        } catch (err) {
+            console.log('Error: ' + JSON.stringify());
+        }
+        navigate("/flightDetails");
+    }
     return (
         <>
             <div className="flex bg-[#F9F9F9] h-28 w-auto  px-10 rounded-xl  justify-center">
@@ -171,15 +195,7 @@ const SearchBar = () => {
                 </div>
                 <div className="h-full w-[8.7rem] ml-3 p-3 flex items-center">
                     <button
-                        onClick={() => {
-                            console.log("Search Clicked ");
-                            console.log("From Airport :", fromAirpot);
-                            console.log("To Airport :", toAirpot);
-                            console.log("Departure Date : ", departureDate);
-                            console.log("Travellers No. : ", travellers);
-                            console.log("Class : ", classType);
-                            navigate("/flightDetails");
-                        }}
+                        onClick={handleSearch}
                         className="border mt-3 rounded-lg p-2 w-full bg-orange-500 text-white text-lg font-semibold"
                     >
                         Search

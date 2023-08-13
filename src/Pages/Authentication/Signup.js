@@ -121,10 +121,14 @@ function FormDataComponent() {
             if (response.status === 201) {
                 console.log(response)
                 console.log(JSON.stringify(response.data));
+
                 dispatch(setUserInfo(response.data));
                 dispatch(setUserInfo(userInfo));
+
                 console.log("user info after update", userInfo)
+
                 dispatch(setIsLoggedIn(true));
+                
                 navigate("/signin");
                 alert("Your account succefully registered! Please signin")
             }
