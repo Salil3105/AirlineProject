@@ -1,75 +1,47 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 const SearchBar = () => {
     const navigate = useNavigate();
-    const [data, setData] = useState([]);
     const [searchLocation, setSearchLocation] = useState([]);
-    const [location, setLocation] = useState(searchLocation);
-
-    const suggestionData = ["Pune", "Banglore", "Mumbai", "New Mumbai"];
-    const finalData = {}
-
-    const [value, setValue] = useState("");
+    
 
     const fetchSearData = async (value) => {
         axios
             .get(`http://localhost:8080/airport/search?q=${value}`)
             .then((response) => {
+
                 console.log(response.data);
-                setData(response.data)
+                
 
                 const airportlist = response.data?.map((item) => {
                     return item?.location
-                })
+                });
+                console.log("Search Location : " + searchLocation);
                 setSearchLocation(airportlist);
-                finalData.list = airportlist;
-                finalData.data = data;
-                console.log("Airport List : " + airportlist);
-                console.log("Final Data : " + finalData);
-                return finalData;
-            })
-            .catch((error) => console.error(error));
+                return searchLocation;
+            }).catch((error) => console.error(error));
     };
 
-    const fetch = () => {
-        fetchSearData(value)
-    }
-
-    useEffect(() => {
-        fetch()
-    }, [value])
-
-    // const suggestionData = ["Pune", "Banglore", "Mumbai", "New Mumbai"];
-    const getSuggestions = inputValue => {
-        return suggestionData.filter(suggestion => suggestion.includes(inputValue));
-    };
-
-    const handleSuggestionClick = (suggestion) => {
-        setValue(suggestion);
-
-    };
-
-    const [fromAirpot, setFromAirpot] = useState();
-    const [toAirpot, setToAirpot] = useState();
+    const [fromAirpot, setFromAirpot] = useState('');
+    const [toAirpot, setToAirpot] = useState('');
     const [departureDate, setDepartureDate] = useState();
     const [travellers, setTravellers] = useState();
     const [classType, setClassType] = useState();
 
+
     const handleFromAirportChange = (event) => {
         const newValue = event.target.value;
-        setValue(newValue);
-        const filterLocation = location.filter((item) => item.location === event)
-        setFromAirpot(event.target.value);
-        setLocation(filterLocation)
+        setFromAirpot(newValue);
+        fetchSearData(newValue);
     };
 
     const handleToAirportChange = (event) => {
         const newValue2 = event.target.value;
-        setValue(newValue2);
-        setToAirpot(event.target.value);
+        setToAirpot(newValue2);
+        fetchSearData(newValue2);
     };
 
     const handleDepartureDate = (event) => {
@@ -83,7 +55,7 @@ const SearchBar = () => {
     };
     return (
         <>
-            <div className="flex bg-[#F9F9F9] h-28 w-[80%] rounded-xl  justify-center ]">
+            <div className="flex bg-[#F9F9F9] h-28 w-auto  px-10 rounded-xl  justify-center">
                 <div className="h-full w-56 p-3  items-center">
                     <label className="text-gray-500 text-lg tracking-widest">From</label>
                     <input
@@ -94,17 +66,20 @@ const SearchBar = () => {
                         className="placeholder:text-black bg-gray-200 border text-bg border-none rounded-md block w-52 p-3"
                         placeholder="Enter City or Airpot"
                     />
-                    <ul className=" cursor-pointer p-2 focus:disabled:visible ">
-                        {location.map((item, index) => (
-                            <li
-                                key={index}
-                                onClick={() => handleSuggestionClick(item)}
-                                className="mt-3 rounded-md"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
+                    <div className=" bg-[#e5e7eb] text-black cursor-pointer w-52  max-h-40  overflow-hidden stacked-fractions">
+                        {
+                            searchLocation.map((item, id) => {
+                                return (
+                                    <div onClick={(e) => setFromAirpot(item)} className="p-2 px-3 hover:bg-[#efefef]" key={id}>
+                                        {
+                                            item
+                                        }
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+
                 </div>
 
                 <div className=" h-full w-56 p-3  items-center">
@@ -117,17 +92,19 @@ const SearchBar = () => {
                         className="placeholder:text-black bg-gray-200 border text-bg border-none rounded-md block w-52 p-3"
                         placeholder="Enter City or Airpot"
                     />
-                    <ul className=" cursor-pointer p-2 focus:disabled:visible ">
-                        {location.map((item, index) => (
-                            <li
-                                key={index}
-                                onClick={() => handleSuggestionClick(item)}
-                                className="mt-3 rounded-md"
-                            >
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
+                    <div className=" bg-[#e5e7eb] text-black cursor-pointer w-52  max-h-40  overflow-hidden stacked-fractions">
+                        {
+                            searchLocation.map((item, id) => {
+                                return (
+                                    <div onClick={(e) => setToAirpot(item)} className="p-2 px-3 hover:bg-[#efefef]" key={id}>
+                                        {
+                                            item
+                                        }
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
                 </div>
 
                 <div className=" h-full w-44 p-3  items-center">
@@ -141,20 +118,6 @@ const SearchBar = () => {
                         style={{ color: "black", fontSize: "0.885rem" }}
                         id="from"
                         className="bg-gray-200 border text-bg border-none rounded-md block w-40 p-3"
-                    />
-                </div>
-
-                <div className=" h-full w-44 p-3  items-center">
-                    <label className="text-gray-500 text-lg tracking-widest">
-                        Return
-                    </label>
-                    <input
-                        value={toAirpot}
-                        onChange={handleToAirportChange}
-                        type="date"
-                        style={{ color: "black", fontSize: "0.885rem" }}
-                        id="from"
-                        className="bg-gray-200 border  text-black border-none rounded-md block w-40 p-3"
                     />
                 </div>
 
